@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de números</title>
+</head>
+<body>
+    <h1>Calculadora de números</h1>
+    <label for="numbers">Introduce una lista de números separados por coma:</label>
+    <input type="text" id="numbers">
+    <button onclick="calculate()">Calcular</button>
+    <div id="result"></div>
+
+    <script>
+        function calculate() {
+            const numbersInput = document.getElementById('numbers').value;
+            const numbers = numbersInput.split(',').map(Number);
+            
+            const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+            const max = Math.max(...numbers);
+            const min = Math.min(...numbers);
+            const average = sum / numbers.length;
+
+            document.getElementById('result').innerHTML = `
+                <p>Suma: ${sum}</p>
+                <p>Mayor: ${max}</p>
+                <p>Menor: ${min}</p>
+                <p>Media: ${average}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

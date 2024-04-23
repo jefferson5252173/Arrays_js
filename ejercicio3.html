@@ -1,0 +1,45 @@
+from tkinter import *
+
+# Función para agregar un elemento al array
+def agregar_elemento():
+    elemento = entrada.get()
+    if elemento:
+        array.append(elemento)
+        mostrar_contenido()
+
+# Función para eliminar el último elemento del array
+def eliminar_elemento():
+    if array:
+        array.pop()
+        mostrar_contenido()
+
+# Función para mostrar el contenido del array en la etiqueta
+def mostrar_contenido():
+    contenido.set(", ".join(array))
+
+# Crear la ventana
+ventana = Tk()
+ventana.title("Ejercicio 3")
+
+# Variables
+array = []
+contenido = StringVar()
+
+# Etiqueta para mostrar el contenido del array
+etiqueta_contenido = Label(ventana, textvariable=contenido)
+etiqueta_contenido.pack()
+
+# Entrada para ingresar elementos al array
+entrada = Entry(ventana)
+entrada.pack()
+
+# Botón para agregar un elemento al array
+boton_agregar = Button(ventana, text="Agregar", command=agregar_elemento)
+boton_agregar.pack()
+
+# Botón para eliminar el último elemento del array
+boton_eliminar = Button(ventana, text="Eliminar último", command=eliminar_elemento)
+boton_eliminar.pack()
+
+# Mostrar la ventana
+ventana.mainloop()
